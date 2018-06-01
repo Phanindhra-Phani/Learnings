@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+			 http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- Type of Attribute byType -->
+	<bean id="studentByType" class="com.spring.learning.autowiring.Student"
+		p:name="#{'Phani'}" p:enrollId="#{'game' == 'gameOfThrones'?0902:0942}"
+		p:result="#{'phani' eq 'phani' AND '1000' gt '1000'}" primary="true"
+		autowire="byType">
+	</bean>
+
+	<bean id="region" class="com.spring.learning.autowiring.Region"
+		p:city="#{'Warangal'.toUpperCase()}">
+	</bean>
+
+	<!-- POJO id should be matched with bean id byName -->
+	<bean id="studentByName" class="com.spring.learning.autowiring.Student"
+		p:name="#{'Phani'}" p:enrollId="#{'game' == 'gameOfThrones'?0902:0942}"
+		p:result="#{'phani' eq 'phani' AND '1000' gt '1000'}" autowire="byName">
+	</bean>
+
+	<bean id="place" class="com.spring.learning.autowiring.Region"
+		p:city="#{'Hanmakonda'.toUpperCase()}" autowire-candidate="false">
+	</bean>
+
+	<bean id="studentByConstructor" class="com.spring.learning.autowiring.Student"
+		p:name="#{'Phani'}" p:enrollId="#{'game' == 'gameOfThrones'?0902:0942}"
+		p:result="#{'phani' eq 'phani' AND '1000' gt '1000'}" autowire="constructor">
+		<property name="place" ref="place"></property>
+	</bean>
+
+	<bean id="subject" class="com.spring.learning.autowiring.Subject"
+		p:subjectName="Maths">
+	</bean>
+
+
+
+</beans>
