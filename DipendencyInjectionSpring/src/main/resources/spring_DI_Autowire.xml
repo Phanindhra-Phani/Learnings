@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="adress12" class="com.learning.data.di.pojo.autowire.EmployeeAdress" primary="true">
+		<property name="streetNumber" value="123123"></property>
+		<property name="houseNumber" value="456456"></property>
+		<property name="country" value="iraq"></property>
+		<property name="phnNo" value="0409876"></property>
+	</bean>
+	
+	
+	<bean id="adress" class="com.learning.data.di.pojo.autowire.EmployeeAdress">
+		<property name="streetNumber" value="876585"></property>
+		<property name="houseNumber" value="87677"></property>
+		<property name="country" value="india"></property>
+		<property name="phnNo" value="987567"></property>
+	</bean>
+
+	<bean id="adress1" class="com.learning.data.di.pojo.EmployeeAdress">
+		<property name="streetNumber" value="3434"></property>
+		<property name="houseNumber" value="456456"></property>
+		<property name="country" value="Iqrqewe"></property>
+		<property name="phnNo" value="0409876"></property>
+	</bean>
+
+	<bean id="emp" class="com.learning.data.di.pojo.autowire.Employee"
+		autowire="byType">
+
+	</bean>
+
+
+	<!-- <bean id="emp1" class="com.learning.data.di.pojo.Employee"> <property 
+		name="fName" value="Pranithsdfasd"></property> <property name="lName" value="Krishnaasdafs"></property> 
+		<property name="adress" ref="empAdr1"></property> </bean> -->
+
+
+</beans>

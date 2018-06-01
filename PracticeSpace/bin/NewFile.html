@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//Step 1 :: Defining a JSON String 
+	var jsonString = "{ \"UserID\": 465914, \"user\": { \"firstName\": \"James\", \"lastname\": \"Gunn\" },"
+			+ "\"DOB\": \"30-05-1990\", "
+			+ "\"Story Type\": \"Horror\", "
+			+ "\"comments\": { \"body\": \"Horror and Suspence thriller\" }  }";
+
+			//Step 2 :: Parsign the JSON String to JavaScript Object
+			var jsonObject = JSON.parse(jsonString);
+			var userObject = jsonObject["user"];
+			var commentsObject = jsonObject["comments"];
+			
+			document.write("<hr>");
+			document.write("<table>");
+			
+			document.write("<tr><td>"+"UserID"+"</td>");
+			document.write("<td>"+jsonObject["UserID"]+"</td></tr>");
+			
+			document.write("<tr><td>"+"First Name"+"</td>");
+			document.write("<td>"+userObject["firstName"]+"</td></tr>");
+
+			document.write("<tr><td>"+"Last Name"+"</td>");
+			document.write("<td>"+userObject["lastname"]+"</td></tr>");
+			
+			document.write("<tr><td>"+"DOB"+"</td>");
+			document.write("<td>"+jsonObject["DOB"]+"</td></tr>");
+			
+			document.write("<tr><td>"+"Story Type"+"</td>");
+			document.write("<td>"+jsonObject["Story Type"]+"</td></tr>");
+			
+			document.write("<tr><td>"+"comments"+"</td>");
+			document.write("<td><textarea>"+commentsObject["body"]+"</textarea></td></tr>");
+			
+			
+			document.write("</table>");
+			
+			/* document.write("</br></br><font style=\"color: blue\">" + prop + "</font>::"
+					+ jsonObject[prop]); */
+			//Step 3 :: Looping  each of the properties in the JavaScript object and printing values. 
+			/* for ( var prop in jsonObject) {
+		
+				document.write("</br></br><font style=\"color: blue\">" + prop + "</font>::"
+						+ jsonObject[prop]);
+		
+			} */
+			document.write("<hr>");
+</script>
+</head>
+<body>
+</body>
+</html>

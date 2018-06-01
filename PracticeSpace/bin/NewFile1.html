@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//Step 1 :: Defining a JSON String 
+	var jsonString = "{ \"blogID\": 12345, \"user\": { \"firstName\": \"James\", \"lastname\": \"Gunn\" },"
+			+ "\"blogContent\": \"This is my first JSON for objects and this looks simple\", "
+			+ "\"tags\": [ \"first\", \"JSON\", \"looks\", \"simple\" ], "
+			+ "\"comments\": [ { \"body\": \"Lorem ipsum dolor sit amet\", "
+			+ "\"email\": \"whwZHtDw@LbGOObNn.com\", \"author\": \"Cassi Heal\" },"
+			+ " { \"body\": \"consectetur adipisicing elit, sed do eiusmod \","
+			+ " \"email\": \"VzdvZbJK@ziNZbdLG.com\", \"author\": \"Bao Ziglar\" } ] }";
+
+			//Step 2 :: Parsign the JSON String to JavaScript Object
+			var jsonObject = JSON.parse(jsonString);
+	
+			document.write("<hr>");
+
+			//Step 3 :: Looping  each of the properties in the JavaScript object and printing values. 
+			for ( var prop in jsonObject) {
+		
+				document.write("</br></br><font style=\"color: blue\">" + prop + "</font>::"
+						+ jsonObject[prop]);
+		
+			}
+			document.write("<hr>");
+</script>
+</head>
+<body>
+</body>
+</html>

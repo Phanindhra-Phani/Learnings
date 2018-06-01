@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="empAdr" class="com.learning.data.di.pojo.con.EmployeeAdress">
+		<constructor-arg value="pranith"></constructor-arg>
+
+
+	</bean>
+
+
+	<bean id="empAdr1" class="com.learning.data.di.pojo.con.EmployeeAdress">
+		<constructor-arg name="streetNumber" value="123456"></constructor-arg>
+
+		<constructor-arg name="countryCountry" value="iran"></constructor-arg>
+
+		<constructor-arg name="houseNumber" value="hno123"></constructor-arg>
+
+	</bean>
+
+	<bean id="emp" class="com.learning.data.di.pojo.con.Employee">
+
+		<constructor-arg value="fname"></constructor-arg>
+		<constructor-arg value="lname"></constructor-arg>
+		<constructor-arg ref="empAdr1"></constructor-arg>
+	</bean>
+
+
+</beans>
