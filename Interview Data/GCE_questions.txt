@@ -1,0 +1,18 @@
+1) What is Dependency Injection?
+2) What is Autowiring and types of Autowiring
+3) What is Join point?
+4) Builder Design Pattern with example
+5) What are the annotations used in @SpringBootApplication
+6) How can we configure Database connection in Spring Boot Application
+7) Spring Security
+8) When you will get BeanIntialization error when doing Autowiring?
+9) What is Consumer in Java 8
+10) What is default concurrency level in Concurrent HashMap?
+11) What are Functional Interfaces and what is use of Lambda expressions?
+12) How you will encrypt database password and connect to DB in Spring Boot Application
+13) Difference between @Bean and @Autowire
+14) How you will know that particular class is for Spring AOP? --  Annotated with @Aspect
+15) How can we overcome of using Comparator using Java 8 in Java? Gave Employee Pojo and asked to sorted by Name
+16) Singleton Design Pattern with respect to Serialization
+17) Thread execution using Executors? Asked to write syntax
+18) How do you validate the request from Client in Restful serivce?
