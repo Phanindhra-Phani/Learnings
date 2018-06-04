@@ -1,10 +1,10 @@
-package org.spring.basics;
+package org.spring.setterinjection;
 
 public class Employee {
 	
 	private int employeeId;
 	private String employeeName;
-	
+
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -17,7 +17,11 @@ public class Employee {
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName
+				+ "]";
+	}
+	
 }

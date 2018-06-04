@@ -7,8 +7,11 @@
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
    
-   <bean id="employee" class="org.spring.basics.Employee">
-	   	<property name="employeeId" value="1"/>
-	   	<property name="employeeName" value="Sravan Kumar"/>
-   </bean>
+  <bean id="employee" class="org.spring.constructorinjection.Employee">
+	   	<constructor-arg type = "employeeName" value = "Sravan Kumar"/>
+	   	<constructor-arg name = "companyName" value = "CTS"/>
+   </bean> 
+   
+   	<!-- <property name="employeeId" value="1"/>
+	   	<property name="employeeName" value="Sravan Kumar"/> -->
  </beans>
