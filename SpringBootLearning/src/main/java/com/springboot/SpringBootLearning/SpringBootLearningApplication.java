@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+//@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class SpringBootLearningApplication {
 
 	public static void main(String[] args) {

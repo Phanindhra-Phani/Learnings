@@ -6,6 +6,11 @@ public class Employee {
 	private String lName;
 	private EmployeeAdress adress;
 
+	public Employee() {
+		System.out.println("In Emp");
+	}
+
+	
 	public String getfName() {
 		return fName;
 	}

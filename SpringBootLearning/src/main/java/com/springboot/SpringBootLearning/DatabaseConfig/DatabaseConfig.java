@@ -37,8 +37,9 @@ public class DatabaseConfig {
 
     public static void main(String args[]) {
         Integer a = new Integer(2);
+        System.out.print(a);
         DatabaseConfig c = new DatabaseConfig();
         c.changeVal(a);
         System.out.print(a);
-    }
+    };
 }

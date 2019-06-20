@@ -18,7 +18,7 @@ public class JbossDBConfiguration {
 		Connection con = ds.getConnection();
 		
 		Statement st=con.createStatement();
-        ResultSet rs=st.executeQuery("select count(*) from  MFi_LICNESEE");
+        ResultSet rs=st.executeQuery("select count(*) from  MFi_LICENSEE");
         
         System.out.println(rs.first());
 	}

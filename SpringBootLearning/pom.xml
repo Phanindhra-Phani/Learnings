@@ -60,7 +60,7 @@
 			<version>2.8.5</version>
 		</dependency>
 		<!-- Vera SDK Changes start -->
-		
+
 		<!-- Start Swagger dependencies -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -73,53 +73,59 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.6.1</version>
 		</dependency>
-		
+
 		<!-- End Swagger dependencies -->
-		
+
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.5</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>com.vera.sdk</groupId>
-            <artifactId>verasdk</artifactId>
-            <version>2.13.124.305</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/verasdk-2.13.124.305.jar</systemPath>
-        </dependency>
+			<groupId>com.vera.sdk</groupId>
+			<artifactId>verasdk</artifactId>
+			<version>2.15.127.373</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/verasdk-2.15.127.373.jar</systemPath>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 
 	</dependencies>
 
 	<build>
 		<plugins>
-			<!-- <plugin>
+			<!-- <plugin> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> 
+				</plugin> -->
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin> -->
-			<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- <version>${version.spring.boot}</version> -->
-                <configuration>
-                    <jvmArguments>
-                        -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=${debug.suspend},address=${debug.port}
-                    </jvmArguments>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>repackage</id>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        <configuration>
-                            <layout>WAR</layout>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+				<!-- <version>${version.spring.boot}</version> -->
+				<configuration>
+					<jvmArguments>
+						-Xdebug
+						-Xrunjdwp:transport=dt_socket,server=y,suspend=${debug.suspend},address=${debug.port}
+					</jvmArguments>
+				</configuration>
+				<executions>
+					<execution>
+						<id>repackage</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<layout>WAR</layout>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

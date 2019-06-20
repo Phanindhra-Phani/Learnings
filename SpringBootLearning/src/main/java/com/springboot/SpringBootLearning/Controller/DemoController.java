@@ -1,15 +1,14 @@
 package com.springboot.SpringBootLearning.Controller;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -80,76 +79,54 @@ public class DemoController {
 		
 		InputStream secureInputStream = null;
 		
-		InputStream inputStream =  new BufferedInputStream(file.getInputStream());
+		InputStream inputStream =  file.getInputStream();
 		String originalFileName = file.getOriginalFilename();
 		
 		System.out.println("File name is::: "+originalFileName);
+		String srcPath = "/Users/455813/Downloads/test.pdf";
+		//FileInputStream inputStream = new FileInputStream("C:\\Users\\rayarvk\\Desktop\\Tomorrow.docx");
+		FileOutputStream targetStream = new FileOutputStream("/Users/455813/Downloads/test_secure.html");
 		
 		try {
+			
+			String hashcode = generateUUID();
+			System.out.println("hashcode::: "+hashcode);
+//			String inputHash = calcHash(srcPath);
+//			String inputHash = calcHash(inputStream);
 			SecureInputStreamResult secureInputStreamResult = 
-					securer.secureInputStream(inputStream, originalFileName, calcHash(inputStream));
+					securer.secureInputStream(inputStream, originalFileName, hashcode);
 			
 			System.out.println("Doc id::: "+secureInputStreamResult.getDocId());
 			
 			secureInputStream = secureInputStreamResult.getSecureStream();
 			
-			downloadSecureFile(secureInputStream);
+	            try {
+	                byte[] buf = new byte[4096];
+	                int bytesRead = 0;
+	                while ((bytesRead = secureInputStream.read(buf, 0, buf.length)) >= 0)
+	                    targetStream.write(buf, 0, bytesRead);
+	            }
+	            finally
+	            {
+	            	System.out.println("done");
+	                secureInputStream.close();
+	            }
+
 			
-			
-//			downloadSecureFile(inputStream);
-//			BufferedInputStream bis = new BufferedInputStream(secureInputStream);
-			
-//			byte[] bytes = IOUtils.toByteArray(secureInputStream);
-			
-//			OutputStream os = new ByteArrayOutputStream(); 
-			
-//			OutputStream out = new ByteArrayOutputStream(); 
-//
-//			byte[] buffer = new byte[1024];
-//			int len = secureInputStream.read(buffer);
-//			while (len != -1) {
-//			    out.write(buffer, 0, len);
-//			    len = secureInputStream.read(buffer);
-//			}
-//			
-//			out.flush();
-//			out.close();
-			
-//			int byteRead = 0;
-//			byte[] outputByte = new byte[4096];
-//			while(bis.read(outputByte, 0, 4096) != -1)
-//            {
-//				os.write(outputByte, 0, 4096);
-//            }
-//			secureInputStream.close();
-//			bis.close();
-//			os.flush();
-//			os.close();
-//			while ((byteRead = secureInputStream.read(bytes)) != -1) {
-//				os.write(bytes, 0, byteRead);
-//				byteRead+=byteRead;
-//				
-//			}
-//			while (-1 != (n = secureInputStream.read(bytes))) {
-//				os.write(bytes, 0, n);
-//				
-//			}
-//			String path = System.getProperty("user.home") + File.separator + "Downloads";
-//			 File customDir = new File(path);
-//			 
-//			 if (!customDir.exists()) {
-//                 customDir.mkdir();
-//             }
-//			 
-//			String fileName = customDir.getCanonicalPath() + File.separator + originalFileName;
-//            writeFile(bytes, fileName);
-			
-		} catch (IOException | NoSuchAlgorithmException e) {
+//		} catch (IOException | NoSuchAlgorithmException e) {
+		} catch (IOException e) {	
 			System.out.println("Error when securing a file");
 			e.printStackTrace();
+		} finally {
+			targetStream.close();
+			inputStream.close();
 		}
 		return "fileName is: "+file.getOriginalFilename();
-//		return Response.ok(secureInputStream).build();
+	}
+
+	private String generateUUID() {
+		UUID uuid = UUID.randomUUID();
+		return uuid.toString();
 	}
 	
 	@PostMapping(value = "/secureFileUsingPath")
@@ -192,23 +169,25 @@ public class DemoController {
         MessageDigest md = MessageDigest.getInstance("MD5");
 
 //        FileInputStream stream = new FileInputStream(path);
-        try {
+        /*try {*/
             int bytesRead;
             byte[] buf = new byte[4096];
-            while ((bytesRead = inputStream.read(buf)) >= 0)
+            while ((bytesRead = inputStream.read(buf)) >= 0){
                 md.update(buf, 0, bytesRead);
+            }
 
             byte[] digest = md.digest();
             String result = "";
-            for (int i = 0; i < digest.length; ++i)
+            for (int i = 0; i < digest.length; ++i){
                 result += Integer.toHexString(digest[i]);
-
+            }
+            System.out.println("result::: "+result);
             return result;
-
+/*
         }
         finally {
         	inputStream.close();
-        }
+        }*/
     }
     
     private static String calcHash(String path) throws NoSuchAlgorithmException, IOException {
@@ -234,11 +213,12 @@ public class DemoController {
         }
     }
     
+    
     private void downloadSecureFile(InputStream inputStream) throws IOException {
     	
 //    	BufferedInputStream bis = new BufferedInputStream(inputStream);
 //    	OutputStream out = new ByteArrayOutputStream();
-    	OutputStream out = new FileOutputStream("/Users/455813/Downloads/test_secure.html");
+    	FileOutputStream out = new FileOutputStream("C:/Users/rayarvk/Desktop/Testsecure.html");
     	
 //    	byte[] buffer = new byte[4096];
 //		int len = inputStream.read(buffer);
@@ -248,14 +228,16 @@ public class DemoController {
 //		}
 //    	byte[] bytes = IOUtils.toByteArray(inputStream);
 //    	System.out.println("Size of stream is : "+bytes.length);
-    	byte[] buf = new byte[4096];
+    	byte[] buf = new byte[1008813135];
         int bytesRead = 0;
-        while ((bytesRead = inputStream.read(buf, 0, buf.length)) >= 0)
+        while ((bytesRead = inputStream.read(buf, 0, buf.length)) != -1){
         	out.write(buf, 0, bytesRead);
+        }
         
 		inputStream.close();
 		out.flush();
 		out.close();
+    	
     }
 
 }

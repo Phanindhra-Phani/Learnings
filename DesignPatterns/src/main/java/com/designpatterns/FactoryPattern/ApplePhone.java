@@ -5,7 +5,7 @@ public class ApplePhone implements OperatingSystem {
 	@Override
 	public void specifications() {
 		
-		System.out.println("In Apple Phone and iOS is the Operating System. It is very stable and very user interactive OS.");
+		System.out.println("In Apple Phone and iOS is the Operating System. It is stable and very user interactive OS");
 		
 	}
 
